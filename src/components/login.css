@@ -1,0 +1,406 @@
+
+@font-face {
+  font-family: 'Pacifica Condensed';
+  /* The path is now handled by the JS import, so we just define the font */
+  src: local('Pacifica Condensed'), local('PacificaCondensed-Regular'),
+    url('./assets/fonts/PacificaCondensed-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.login-page-wrapper {
+  position: fixed;
+  inset: 0;          /* shorthand for top:0; right:0; bottom:0; left:0 */
+  width: 100vw;      /* use viewport width, not % */
+  height: 100vh;     /* use viewport height, not % */
+  overflow: hidden;  /* no scroll */
+}
+
+
+/* Two-Column Layout */
+.login-page-wrapper .login-container {
+  display: flex;
+  height: 100%;
+}
+
+/* Left Image/Animation Section */
+.login-page-wrapper .animation-container {
+  width: 60%;
+  position: relative;
+  background-color: #333;
+}
+
+.login-page-wrapper .animation-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/audiologist.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: bgAnimation 15s infinite alternate ease-in-out;
+}
+
+@keyframes bgAnimation {
+
+  0%,
+  100% {
+    background-image: url('./assets/audiologist.jpg');
+    opacity: 1;
+  }
+
+  33% {
+    background-image: url('./assets/hearing.jpg');
+    opacity: 1;
+  }
+
+  66% {
+    background-image: url('./assets/hearing-test.jpg');
+    opacity: 1;
+  }
+}
+
+/* Right Form Section */
+.login-page-wrapper .form-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  padding: 2rem;
+  /* --- CHANGE HERE: Removed the scrollbar from the form container --- */
+  overflow-y: hidden;
+}
+
+/* Form Wrapper (The white card) */
+.login-page-wrapper .form-wrapper {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Typography */
+.login-page-wrapper h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.login-page-wrapper .hear-title {
+  font-family: 'Pacifica Condensed', sans-serif;
+  /* Use your custom font */
+  font-size: 1.8rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.login-page-wrapper .step-indicator {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+/* Input Groups */
+.login-page-wrapper .input-group {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.login-page-wrapper .input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.login-page-wrapper .input-group input[type="text"],
+.login-page-wrapper .input-group input[type="email"],
+.login-page-wrapper .input-group input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login-page-wrapper .input-group input:focus {
+  outline: none;
+  border-color: #ff8c42;
+  box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
+}
+
+/* Date of Birth, Radio & Checkbox Groups */
+.login-page-wrapper .dob-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.login-page-wrapper .dob-group input {
+  text-align: center;
+}
+
+.login-page-wrapper .radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.login-page-wrapper .radio-group label,
+.login-page-wrapper .checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.login-page-wrapper .radio-group input,
+.login-page-wrapper .checkbox-group input {
+  margin-right: 0.5rem;
+  accent-color: #ff5e62;
+}
+
+.login-page-wrapper .checkbox-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* General Buttons */
+.login-page-wrapper .btn {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 8px;
+}
+
+.login-page-wrapper .btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.login-page-wrapper .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-page-wrapper .btn-primary {
+  background: #a855f7;
+  color: white;
+}
+
+.login-page-wrapper .btn-primary:hover {
+  background: #9333ea;
+}
+
+.login-page-wrapper .btn-secondary {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.login-page-wrapper .button-group {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.login-page-wrapper .button-group .btn {
+  margin-bottom: 0;
+}
+
+.login-page-wrapper .oauth-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.login-page-wrapper .btn-google,
+.login-page-wrapper .btn-microsoft {
+  background-color: #ffffff;
+  color: #3c4043;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  border-left-width: 4px;
+}
+
+.login-page-wrapper .btn-google {
+  border-left-color: #4285F4;
+}
+
+.login-page-wrapper .btn-microsoft {
+  border-left-color: #8c8c8c;
+}
+
+.login-page-wrapper .btn-google:hover {
+  background-color: #f8faff;
+  box-shadow: 0 2px 4px rgba(66, 133, 244, 0.2);
+}
+
+.login-page-wrapper .btn-microsoft:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Links and Messages */
+.login-page-wrapper .links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.login-page-wrapper .toggle-link {
+  color: #007bff;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.95rem;
+}
+
+.login-page-wrapper .toggle-link:hover {
+  text-decoration: underline;
+}
+
+.login-page-wrapper .forgot-password-link {
+  color: #007bff;
+  font-size: 0.95rem;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.login-page-wrapper .forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.login-page-wrapper .error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.login-page-wrapper .success-message {
+  color: #28a745;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Divider Style */
+.login-page-wrapper .divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #aaa;
+  margin: 1.5rem 0;
+}
+
+.login-page-wrapper .divider::before,
+.login-page-wrapper .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.login-page-wrapper .divider:not(:empty):before {
+  margin-right: .5em;
+}
+
+.login-page-wrapper .divider:not(:empty):after {
+  margin-left: .5em;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1024px) {
+  .login-page-wrapper .form-wrapper {
+    max-width: 380px;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-page-wrapper .animation-container {
+    display: none;
+  }
+
+  .login-page-wrapper .form-container {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .login-page-wrapper .form-wrapper {
+    max-width: 95%;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .login-page-wrapper h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-page-wrapper .btn {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .login-page-wrapper .dob-group {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .login-page-wrapper .form-wrapper {
+    padding: 1rem;
+  }
+
+  .login-page-wrapper input {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .login-page-wrapper .btn {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+}
+

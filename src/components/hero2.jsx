@@ -1,0 +1,69 @@
+import React, { useState } from 'react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+import comingSoon from './assets/coming-soon.jpg';
+import './hero2.css';
+
+const products = [
+  { id: 1, name: 'Hearing Aid for Everything', desc: 'Compact and powerful hearing support' },
+  { id: 2, name: 'Hearing Aid for Everything', desc: 'Advanced digital sound processor' },
+  { id: 3, name: 'Hearing Aid for Everything', desc: 'Discreet in-ear model for daily use' },
+  { id: 4, name: 'Hearing Aid for Everything', desc: 'Rechargeable long-lasting battery' },
+  { id: 5, name: 'Hearing Aid for Everything', desc: 'Noise cancelling modern design' },
+  { id: 6, name: 'Hearing Aid for Everything', desc: 'Smartphone compatible hearing aid' },
+  { id: 7, name: 'Hearing Aid for Everything', desc: 'Lightweight and ergonomic' },
+  { id: 8, name: 'Hearing Aid for Everything', desc: 'High-fidelity hearing clarity' },
+];
+
+const TopPicks = () => {
+  const [startIndex, setStartIndex] = useState(0);
+  const cardsPerView = 4;
+
+  const handleNext = () => {
+    if (startIndex + cardsPerView < products.length) {
+      setStartIndex(startIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 1);
+    }
+  };
+
+  const visibleProducts = products.slice(startIndex, startIndex + cardsPerView);
+
+  return (
+    <div className="top-picks-wrapper">
+      <div className="top-picks-container">
+        <h2 className="section-title">Browse Products</h2>
+
+        <div className="carousel-wrapper">
+          {startIndex > 0 && (
+            <button className="arrow left" onClick={handlePrev}>
+              <ChevronLeft size={22} />
+            </button>
+          )}
+
+          <div className="product-slider">
+            {visibleProducts.map((product) => (
+              <div key={product.id} className="product-card">
+                <img src={comingSoon} alt={product.name} className="product-img" />
+                <h3 className="product-name">{product.name}</h3>
+                <p className="product-desc">{product.desc}</p>
+
+              </div>
+            ))}
+          </div>
+
+          {startIndex + cardsPerView < products.length && (
+            <button className="arrow right" onClick={handleNext}>
+              <ChevronRight size={22} />
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TopPicks;

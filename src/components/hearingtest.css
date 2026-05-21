@@ -1,0 +1,566 @@
+
+/*
+  This entire CSS file is "scoped" with .hearing-test-page-container.
+  It is guaranteed not to affect any other page on your website.
+*/
+
+:root {
+  --ht-primary-accent: #2563eb;
+  --ht-primary-accent-hover: #1d4ed8;
+  --ht-text-dark: #111827;
+  --ht-text-light: #4b5563;
+  --ht-bg-soft: #f8fafc;
+  --ht-border-color-soft: #e2e8f0;
+}
+
+.hearing-test-page-container {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  color: var(--ht-text-dark);
+  background: #f0f2f5;
+}
+
+.hearing-test-page-container .hearing-fullscreen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.hearing-test-page-container .content-wrapper {
+  width: 100%;
+  max-width: 550px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: ht-fadeIn 0.7s ease-in-out;
+}
+
+.hearing-test-page-container .details-wrapper,
+.hearing-test-page-container .instructions-wrapper-new,
+.hearing-test-page-container .result-wrapper {
+  max-width: 900px;
+}
+
+@keyframes ht-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* All Typography, Buttons, and other styles are scoped */
+.hearing-test-page-container .content-wrapper h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hearing-test-page-container .content-wrapper .subtitle {
+  font-size: 1.1rem;
+  color: var(--ht-text-light);
+  margin-bottom: 2.5rem;
+  max-width: 450px;
+}
+
+.hearing-test-page-container .action-button {
+  background: var(--ht-primary-accent);
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 16px 32px;
+  font-size: 1rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25);
+}
+
+.hearing-test-page-container .action-button:hover {
+  background: var(--ht-primary-accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 25px rgba(37, 99, 235, 0.3);
+}
+
+.hearing-test-page-container .action-button:disabled {
+  background-color: #9ca3af;
+  color: #e5e7eb;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.hearing-test-page-container .modern-dropdown-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.hearing-test-page-container .modern-dropdown-wrapper::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--ht-text-light);
+}
+
+.hearing-test-page-container .modern-dropdown-wrapper select {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--ht-text-dark);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: all 0.2s ease;
+}
+
+.hearing-test-page-container .modern-dropdown-wrapper select:focus {
+  outline: none;
+  border-color: var(--ht-primary-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.hearing-test-page-container .btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.hearing-test-page-container .btn-secondary {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ht-text-dark);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.hearing-test-page-container .btn-secondary:hover {
+  background: white;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
+}
+
+.hearing-test-page-container .details-layout {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.1);
+}
+
+.hearing-test-page-container .details-visual {
+  flex: 1;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  height: 500px;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hearing-test-page-container .details-visual h2 {
+  color: white;
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.hearing-test-page-container .details-form {
+  flex: 1;
+  text-align: left;
+}
+
+.hearing-test-page-container .details-form h1 {
+  font-size: 2.5rem;
+}
+
+.hearing-test-page-container .details-form .subtitle {
+  margin-bottom: 2rem;
+}
+
+.hearing-test-page-container .instructions-steps-new {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.hearing-test-page-container .instruction-item-new {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: white;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.hearing-test-page-container .instruction-item-new:hover {
+  border-color: var(--ht-primary-accent);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+}
+
+.hearing-test-page-container .inst-num-new {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ht-primary-accent);
+}
+
+.hearing-test-page-container .inst-text-new h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: var(--ht-text-dark);
+}
+
+.hearing-test-page-container .inst-text-new p {
+  font-size: 0.9rem;
+  color: var(--ht-text-light);
+  margin: 0;
+}
+
+.hearing-test-page-container .inst-checkbox-new {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #adb5bd;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.hearing-test-page-container .inst-checkbox-new svg {
+  color: white;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.hearing-test-page-container .instruction-item-new.checked {
+  border-color: var(--ht-primary-accent);
+  background-color: #f0f5ff;
+}
+
+.hearing-test-page-container .instruction-item-new.checked .inst-checkbox-new {
+  background-color: var(--ht-primary-accent);
+  border-color: var(--ht-primary-accent);
+}
+
+.hearing-test-page-container .instruction-item-new.checked .inst-checkbox-new svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hearing-test-page-container .pulsar-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hearing-test-page-container .pulsar {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #a8c0ff 0%, #3f86ed 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 40px #a8c0ff, 0 0 80px #3f86ed;
+  animation-name: ht-pulsar-breath;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes ht-pulsar-breath {
+
+  0%,
+  100% {
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+.hearing-test-page-container .pulsar-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(37, 99, 235, 0.5);
+  border-radius: 50%;
+  animation-name: ht-pulsar-expand;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.hearing-test-page-container .pulsar-ring:nth-of-type(2) {
+  animation-delay: 0.7s;
+}
+
+.hearing-test-page-container .pulsar-ring:nth-of-type(3) {
+  animation-delay: 1.4s;
+}
+
+@keyframes ht-pulsar-expand {
+  0% {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.hearing-test-page-container .current-frequency-display {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ht-text-dark);
+  margin-bottom: 2rem;
+}
+
+.hearing-test-page-container .progress-dots-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 3rem;
+}
+
+.hearing-test-page-container .progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.hearing-test-page-container .progress-dot.completed {
+  background-color: var(--ht-text-light);
+}
+
+.hearing-test-page-container .progress-dot.active {
+  background-color: var(--ht-primary-accent);
+  transform: scale(1.6);
+  box-shadow: 0 0 10px var(--ht-primary-accent);
+}
+
+.hearing-test-page-container .audiogram-graph {
+  width: 100%;
+  max-width: 800px;
+  margin: 2.5rem 0;
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--ht-border-color-soft);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+.hearing-test-page-container .audiogram-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(11, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+  border-left: 2px solid var(--ht-border-color-soft);
+  position: relative;
+}
+
+.hearing-test-page-container .y-axis-label {
+  justify-self: end;
+  padding-right: 15px;
+  font-size: 0.9rem;
+  color: var(--ht-text-light);
+  border-top: 1px dashed var(--ht-border-color-soft);
+  display: flex;
+  align-items: center;
+}
+
+.hearing-test-page-container .x-axis-labels {
+  display: grid;
+  grid-template-columns: 80px repeat(11, 1fr);
+  border-top: 2px solid var(--ht-border-color-soft);
+  padding-top: 10px;
+}
+
+.hearing-test-page-container .x-axis-spacer {
+  grid-column: 1;
+}
+
+.hearing-test-page-container .x-axis-label {
+  justify-self: center;
+  align-self: end;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ht-text-light);
+}
+
+.hearing-test-page-container .x-axis-title {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ht-text-dark);
+  margin-top: 1.5rem;
+}
+
+.hearing-test-page-container .result-dot {
+  width: 14px;
+  height: 14px;
+  background-color: var(--ht-primary-accent);
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 8px var(--ht-primary-accent);
+  justify-self: center;
+  align-self: center;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* FIX: This ensures the map section is always centered */
+.hearing-test-page-container .map-container {
+  width: 100%;
+  padding: 6rem 2rem;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* This centers the content horizontally */
+  box-sizing: border-box;
+}
+
+.hearing-test-page-container .map-container h2,
+.hearing-test-page-container .map-container p {
+  text-align: center;
+}
+
+.hearing-test-page-container .leaflet-container {
+  height: 450px;
+  width: 100%;
+  /* Make it responsive */
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+
+  .hearing-test-page-container .details-layout,
+  .hearing-test-page-container .instructions-layout {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .hearing-test-page-container .details-visual {
+    width: 100%;
+    height: 250px;
+  }
+
+  .hearing-test-page-container .details-visual h2,
+  .hearing-test-page-container .details-form h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .hearing-test-page-container .details-form {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .hearing-test-page-container .hearing-fullscreen {
+    padding: 1rem;
+  }
+
+  .hearing-test-page-container .details-wrapper,
+  .hearing-test-page-container .instructions-wrapper-new,
+  .hearing-test-page-container .result-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hearing-test-page-container .content-wrapper h1 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .hearing-test-page-container .details-layout {
+    padding: 1rem;
+  }
+
+  .hearing-test-page-container .details-visual {
+    display: none;
+  }
+
+  .hearing-test-page-container .details-visual h2,
+  .hearing-test-page-container .details-form h1 {
+    font-size: 1.6rem;
+  }
+
+  .hearing-test-page-container .btn-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hearing-test-page-container .audiogram-graph {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f8f8f8;
+  }
+
+  .hearing-test-page-container .audiogram-graph::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .hearing-test-page-container .audiogram-graph::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+
+  .hearing-test-page-container .audiogram-grid,
+  .hearing-test-page-container .x-axis-labels {
+    min-width: 500px;
+    grid-template-columns: 60px repeat(11, 1fr);
+  }
+
+  .hearing-test-page-container .y-axis-label,
+  .hearing-test-page-container .x-axis-label {
+    font-size: 0.7rem;
+  }
+}
+

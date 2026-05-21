@@ -1,0 +1,298 @@
+/* ✅ Hero Container Blur + Glow */
+.hero-container {
+  width: 90vw;
+  height: 85vh;
+  overflow: hidden;
+  position: relative;
+  margin: 70px auto;
+  top: -0.8rem;
+  border-radius: 25px;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+html,
+body {
+  height: 100%;
+
+}
+
+.hero-container::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: inherit;
+  filter: blur(50px);
+  z-index: -1;
+  border-radius: 40px;
+  opacity: 0.7;
+}
+
+/* ✅ Body Background */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transition: background 0.8s ease-in-out;
+  background: linear-gradient(to bottom, #bbb4e4, #f2daf6, #d9f3fa, #ffffff);
+}
+
+/* ✅ Slide Styles */
+.slide {
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.8s ease-in-out;
+  isolation: isolate;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+  mix-blend-mode: overlay;
+  filter: blur(20px);
+  z-index: 0;
+}
+
+/* ✅ Slide Backgrounds */
+.slide1 {
+  background-image: url("./assets/products/bg1.png");
+}
+.slide2 {
+  background-image: url("./assets/products/bg2.png");
+}
+.slide3 {
+  background-image: url("./assets/products/bg3.png");
+}
+.slide4 {
+  background-image: url("./assets/products/teal.png");
+}
+.slide5 {
+    background-image: url("./assets/products/sky.jpg");
+
+}
+.slide6 {
+    background-image: url("./assets/products/blue.jpg");
+
+}
+
+/* ✅ Slick Slider Fixes */
+.slick-slider {
+  overflow: visible;
+  width: 100vw;
+}
+.slick-list {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.slick-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* ✅ Product Images */
+.product-image {
+  height: auto;
+  max-width: 60%;
+  position: absolute;
+  z-index: 2;
+  will-change: transform, opacity;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.product-image-1 {
+  width: 700px;
+  bottom: 1%;
+  left: 45%;
+  transform: translateX(-50%);
+}
+
+.product-image-2,
+.product-image-3,
+.product-image-4,
+.product-image-5,
+.product-image-6 {
+  width: 800px;
+  right: 10%;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slick-active .product-image-2,
+.slick-active .product-image-3,
+.slick-active .product-image-4,
+.slick-active .product-image-5,
+.slick-active .product-image-6 {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+/* ✅ Captions */
+.caption {
+  position: absolute;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  max-width: 450px;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+.slick-active .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.caption h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.caption p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* ✅ Caption Positions */
+.slide1 .caption {
+  top: 3%;
+  left: 45%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #44405b;
+}
+.slide2 .caption,
+.slide3 .caption,
+.slide4 .caption,
+.slide5 .caption,
+.slide6 .caption {
+  top: 35%;
+  left: 10%;
+  transform: translateY(-50%);
+}
+
+/* ✅ Caption Colors */
+.slide2 .caption { color: #f0f0f0; }
+.slide3 .caption { color: #326208; }
+.slide4 .caption { color: #14565c; }
+.slide5 .caption { color: #232d6b; }
+.slide6 .caption { color: #24374b; }
+
+/* ✅ Buy Button */
+.buy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;               /* default padding */
+  background-color: #000;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  border-radius: 1.5rem;            /* subtle default curve */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: 
+    padding-right 0.3s ease,
+    padding-left 0.3s ease,
+    background-color 0.3s ease,
+    border-radius 0.3s ease;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+/* Chevron (right arrow) — initially hidden and off-position */
+.chevron-icon {
+  position: absolute;
+  right: 12px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* On hover: increase right padding and show arrow */
+.buy-btn:hover {
+  padding-right: 38px;
+  padding-left: 16px;
+  border-radius: 2.5rem;
+}
+
+.buy-btn:hover .chevron-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* ✅ Custom Styled Slick Dots - Rectangle Boxes */
+.slick-dots {
+  position: absolute;
+  bottom: 18px;
+  left: 45%; /* Shifted a bit left from 50% */
+  transform: translateX(-50%);
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+}
+
+.slick-dots li {
+  width: 18px; /* Reduced size */
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.slick-dots li button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: transparent;
+}
+
+.slick-dots li button:before {
+  display: none; /* Hide default dot */
+}
+
+.slick-dots li.slick-active {
+  background-color: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+
+/* ✅ Hide Arrows */
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+/* ✅ Slide Transition */
+.slick-slide {
+  transition: transform 0.8s ease-in-out !important;
+}
+
+

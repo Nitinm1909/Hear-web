@@ -1,0 +1,210 @@
+/* Force white background sitewide */
+body {
+  background-color: white !important;
+}
+
+.top-picks-wrapper {
+  background-color: rgb(255, 255, 255);
+  padding: 50px 10px; /* reduced from 70px to move the section up */
+  z-index: 2;
+  margin-top: -6.5rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px; /* reduced a bit to make gap smaller */
+}
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  z-index: 1
+}
+
+/* Centered container */
+.top-picks-container {
+  max-width: 1500px;
+  padding: 0 5vw;
+  margin: 0 auto;
+}
+
+
+
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* <- Change this from 'hidden' to 'visible' */
+  z-index: 11; /* <- Make sure this is higher than default content */
+}
+
+
+.product-slider {
+  display: flex;
+  gap: 40px;
+  transition: all 0.5s ease-in-out;
+  flex-wrap: nowrap;
+}
+
+.product-card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 16px;
+  padding: 20px;
+  width: 250px; /* reduced from 300px to 240px */
+  min-height: 120px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 1px solid #eee;
+  flex-shrink: 0;
+  margin-top: 50px;
+}
+
+
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+.product-img {
+  width: 190px;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.price-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.original-price {
+  font-size: 0.95rem;
+  text-decoration: line-through;
+  color: #999;
+}
+
+.offer {
+  font-size: 0.9rem;
+  color: #e53935;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+
+.rating-num {
+  font-size: 0.85rem;
+  color: #555;
+  margin-left: 6px;
+}
+
+/* Buy Now button */
+.buy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: padding-right 0.3s ease, padding-left 0.3s ease;
+  min-width: 100px;
+}
+
+.chevron-icon {
+  position: absolute;
+  right: 12px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.buy-btn:hover {
+  padding-right: 38px;
+  padding-left: 16px;
+}
+
+.buy-btn:hover .chevron-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Carousel arrows */
+.arrow {
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+}
+
+.arrow:hover {
+  background-color: #fafafa;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.arrow.left {
+  left: -50px;
+}
+
+.arrow.right {
+  right: -50px;
+}
+
+
+/* Left shift of red underline */
+.red-underline.offset {
+  margin-left: calc(50% - 30px); /* Adjust as needed */
+}

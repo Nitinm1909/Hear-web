@@ -1,0 +1,285 @@
+.team-section {
+  padding: 10px 40px;
+  background: #f4f6fa;
+  text-align: center;
+}
+
+.team-title {
+  font-size: 2.5rem;
+  color: #1f2b50;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.team-horizontal-scroll {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  justify-items: center;
+  align-items: stretch;
+}
+
+.team-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.team-image-wrapper {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  
+}
+
+
+.team-card:hover .team-image {
+  transform: scale(1.1);
+}
+
+.team-card:hover .team-image-wrapper::after {
+  background: rgba(0,0,0,0.4);
+}
+
+.team-info {
+  padding: 20px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Team member name */
+.team-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1f2b50;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* On hover only this card’s name changes */
+.team-card:hover .team-name {
+  color: #0A66C2; /* LinkedIn brand dark blue */
+  transform: scale(1.1);
+}
+
+.team-role,
+.team-desc {
+  transition: transform 0.3s ease, color 0.3s ease;
+  text-align: center;
+  color: #5c5c7a;
+}
+
+.team-card:hover .team-role,
+.team-card:hover .team-desc {
+  transform: scale(1.05);
+  color: #333;
+}
+
+/* Icons */
+.team-icons {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-icons a {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color:#3682ce;
+}
+
+/* LinkedIn official color */
+.team-icons a.linkedin {
+  color: #3682ce;
+}
+
+/* Instagram official pink */
+.team-icons a.instagram {
+  color: #E4405F;
+}
+
+
+.team-card.featured {
+  position: relative;
+  border: 2px solid #c4b5fd;
+  box-shadow: 0 8px 30px rgba(137, 110, 255, 0.2);
+}
+
+.team-card.featured .team-info {
+  background: linear-gradient(135deg, #ede9fe, #ffffff);
+  border-radius: 0 0 18px 18px;
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.team-section {
+  padding: 10px 40px 80px; /* extra bottom padding (80px) */
+  background: #f4f6fa;
+  text-align: center;
+}
+/* Default (desktop/tablet) - normal grid */
+.team-horizontal-scroll {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ✅ Mobile: horizontal scroll */
+@media (max-width: 768px) {
+  .team-horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .team-card {
+    flex: 0 0 80%; /* card takes ~80% of screen */
+    scroll-snap-align: start;
+  }
+
+  .team-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  /* optional: hide scrollbar but keep scroll working */
+  .team-horizontal-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .team-horizontal-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+@media (max-width: 768px) {
+  .team-horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* ✅ Reduce card size in mobile */
+  .team-card {
+    flex: 0 0 100%; /* instead of 80%, smaller cards */
+    max-width: 280px; /* prevents extra large stretch */
+    scroll-snap-align: start;
+  }
+
+  .team-image-wrapper {
+    height: 220px; /* smaller image height for mobile */
+  }
+
+  .team-info {
+    padding: 12px;
+  }
+
+  .team-name {
+    font-size: 1rem;
+  }
+
+  .team-role {
+    font-size: 0.85rem;
+  }
+
+  .team-desc {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 768px) {
+  .team-horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* ✅ Each card fills full width (1 at a time) */
+  .team-card {
+    flex: 0 0 100%;       /* full screen width */
+    max-width: 95%;      /* no stretching issues */
+    scroll-snap-align: center; /* snaps perfectly centered */
+  }
+
+  .team-image-wrapper {
+    height: 300px; /* balanced image height */
+  }
+
+  .team-info {
+    padding: 14px;
+  }
+
+  .team-name {
+    font-size: 1.1rem;
+  }
+
+  .team-role {
+    font-size: 0.9rem;
+  }
+
+  .team-desc {
+    font-size: 0.85rem;
+  }
+
+  /* optional: hide scrollbar */
+  .team-horizontal-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .team-horizontal-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+/* Bubble container */
+.team-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.team-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cbd5e1; /* gray */
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.team-dot.active {
+  background: #3682ce; /* active blue */
+  transform: scale(1.2);
+}

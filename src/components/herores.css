@@ -1,0 +1,163 @@
+/* ===============================
+   Responsive Hero Carousel (No Horizontal Scroll)
+   =============================== */
+
+/* -----------------------
+   1️⃣ Mobile: ≤ 767px
+------------------------ */
+@media screen and (max-width: 767px) {
+  .hero-container {
+    width: 95vw;
+    height: 70vh;
+    margin-top: 40px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .slide {
+    height: 70vh;
+  }
+
+  .product-image-1 {
+    width: 80vw;       /* relative width */
+    max-width: 300px;  /* optional max */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
+
+  .product-image-2,
+  .product-image-3,
+  .product-image-4,
+  .product-image-5,
+  .product-image-6 {
+    width: 85vw;
+    max-width: 350px;
+    right: 5%;
+  }
+
+  .caption {
+    max-width: 90%;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .caption h2 {
+    font-size: 1.8rem;
+  }
+
+  .caption p {
+    font-size: 1rem;
+  }
+
+  .buy-btn {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+}
+
+/* -----------------------
+   2️⃣ Tablet: 768px - 1054px
+------------------------ */
+@media screen and (min-width: 768px) and (max-width: 1054px) {
+  .hero-container {
+    width: 95vw;
+    height: 80vh;
+    overflow: hidden;
+  }
+
+  .slide {
+    height: 80vh;
+  }
+
+  .product-image-1 {
+    width: 60vw;
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .product-image-2,
+  .product-image-3,
+  .product-image-4,
+  .product-image-5,
+  .product-image-6 {
+    width: 65vw;
+    max-width: 600px;
+    right: 5%;
+  }
+
+  .caption {
+    max-width: 400px;
+  }
+
+  .caption h2 {
+    font-size: 2.5rem;
+  }
+
+  .caption p {
+    font-size: 1.2rem;
+  }
+}
+
+/* -----------------------
+   3️⃣ Mid-large: 1055px - 1155px
+------------------------ */
+@media screen and (min-width: 1055px) and (max-width: 1155px) {
+  .hero-container {
+    height: 90vh;
+    overflow: hidden;
+  }
+
+  .product-image-1 {
+    width: 70vw;
+    max-width: 800px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .product-image-2,
+  .product-image-3,
+  .product-image-4,
+  .product-image-5,
+  .product-image-6 {
+    width: 75vw;
+    max-width: 900px;
+    right: 5%;
+  }
+
+  .caption {
+    max-width: 550px;
+  }
+}
+
+/* -----------------------
+   4️⃣ Desktop: > 1155px
+------------------------ */
+@media screen and (min-width: 1156px) {
+  .hero-container {
+    width: 90vw;
+    height: 85vh;
+    overflow: hidden;
+  }
+
+  .product-image-1 {
+    width: 50vw;
+    max-width: 700px;
+  }
+
+  .product-image-2,
+  .product-image-3,
+  .product-image-4,
+  .product-image-5,
+  .product-image-6 {
+    width: 55vw;
+    max-width: 800px;
+  }
+
+  .caption {
+    max-width: 450px;
+  }
+}
