@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./timeline.css";
 import { User, BarChart, Settings, Shield, Award } from "lucide-react";
 
@@ -32,9 +32,24 @@ export default function TimelineWithDottedLines() {
   const segments = buildWaveSegments(steps.length, svgWidth, baseY);
   const SEG_DUR = 0.8;
   const SEG_GAP = 0.15;
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="timeline-section">
+    <section ref={sectionRef} className={`timeline-section ${isVisible ? 'reveal-active' : ''}`}>
       <h2 className="timeline-heading">Our Journey</h2>
       <div className="timeline-wrapper">
         {/* Dotted line */}
@@ -62,7 +77,7 @@ export default function TimelineWithDottedLines() {
           {steps.map((s, i) => {
             const baseDelay = i * (SEG_DUR + SEG_GAP) + SEG_DUR;
             return (
-              <div className="timeline-item" key={s.id}>
+              <div className="timeline-item" key={s.id} style={{ '--item-delay': `${i * 120}ms` }}>
                 {i % 2 === 0 && (
                   <div
                     className="timeline-text top"

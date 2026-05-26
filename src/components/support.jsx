@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './support.css';
 import {
   FaUser,
@@ -47,6 +47,43 @@ const Support = () => {
   });
   const [supportMessage, setSupportMessage] = useState('');
   const [isSupportSubmitting, setIsSupportSubmitting] = useState(false);
+  const heroRef = useRef(null);
+  const cardsRef = useRef(null);
+  const supportRef = useRef(null);
+  const feedbackRef = useRef(null);
+  const faqRef = useRef(null);
+  const [visibleSections, setVisibleSections] = useState({
+    hero: false,
+    cards: false,
+    support: false,
+    feedback: false,
+    faq: false,
+  });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisibleSections((current) => {
+          const next = { ...current };
+          entries.forEach((entry) => {
+            if (entry.target === heroRef.current) next.hero = entry.isIntersecting;
+            if (entry.target === cardsRef.current) next.cards = entry.isIntersecting;
+            if (entry.target === supportRef.current) next.support = entry.isIntersecting;
+            if (entry.target === feedbackRef.current) next.feedback = entry.isIntersecting;
+            if (entry.target === faqRef.current) next.faq = entry.isIntersecting;
+          });
+          return next;
+        });
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -10% 0px' }
+    );
+
+    [heroRef, cardsRef, supportRef, feedbackRef, faqRef].forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSupportChange = (e) => {
     const { name, value } = e.target;
@@ -157,13 +194,13 @@ const Support = () => {
 
   return (
     <div className="support-page-wrapper">
-      <div className="hero-bg">
+      <div ref={heroRef} className={`hero-bg reveal-block ${visibleSections.hero ? 'is-visible' : ''}`}>
         <div className="support-header">
           <h1>We’re here to help</h1>
           <input type="text" placeholder="Search for help..." className="search-input" />
         </div>
       </div>
-      <div className="support-main-content">
+      <div ref={cardsRef} className={`support-main-content reveal-block ${visibleSections.cards ? 'is-visible' : ''}`}>
         <div className="top-card-row">
           {supportItems.map((item, index) => {
             const cardContent = (
@@ -198,7 +235,7 @@ const Support = () => {
       </div>
 
       {/* ===== SUPPORT US FORM ===== */}
-      <div id="support-us-section" className="support-us-section">
+      <div id="support-us-section" ref={supportRef} className={`support-us-section reveal-block ${visibleSections.support ? 'is-visible' : ''}`}>
         <div className="support-us-container">
           <div className="support-us-header">
             <div className="support-us-icon-wrap">
@@ -315,7 +352,7 @@ const Support = () => {
         </div>
       </div>
 
-      <div className="hearing-feedback-section">
+      <div ref={feedbackRef} className={`hearing-feedback-section reveal-block ${visibleSections.feedback ? 'is-visible' : ''}`}>
         <div className="hearing-image-section">
           <img src={hearingImage} alt="Hearing Aid" />
         </div>
@@ -358,7 +395,7 @@ const Support = () => {
         </div>
       </div>
       <div className="support-main-content">
-        <div id="faq-section" className="faq-section">
+        <div id="faq-section" ref={faqRef} className={`faq-section reveal-block ${visibleSections.faq ? 'is-visible' : ''}`}>
           <h2>Frequently Asked Questions</h2>
           {faqs.map((faq, index) => (
             <div

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import comingSoon from './assets/coming-soon.jpg';
 import './hero2.css';
@@ -16,7 +16,38 @@ const products = [
 
 const TopPicks = () => {
   const [startIndex, setStartIndex] = useState(0);
-  const cardsPerView = 4;
+  const [cardsPerView, setCardsPerView] = useState(4);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (window.innerWidth < 768) {
+        setCardsPerView(1);
+      } else if (window.innerWidth < 1100) {
+        setCardsPerView(2);
+      } else {
+        setCardsPerView(4);
+      }
+    };
+
+    updateCardsPerView();
+    window.addEventListener('resize', updateCardsPerView);
+    return () => window.removeEventListener('resize', updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleNext = () => {
     if (startIndex + cardsPerView < products.length) {
@@ -33,7 +64,7 @@ const TopPicks = () => {
   const visibleProducts = products.slice(startIndex, startIndex + cardsPerView);
 
   return (
-    <div className="top-picks-wrapper">
+    <div ref={sectionRef} className={`top-picks-wrapper ${isVisible ? 'reveal-active' : ''}`}>
       <div className="top-picks-container">
         <h2 className="section-title">Browse Products</h2>
 
@@ -45,8 +76,12 @@ const TopPicks = () => {
           )}
 
           <div className="product-slider">
-            {visibleProducts.map((product) => (
-              <div key={product.id} className="product-card">
+            {visibleProducts.map((product, index) => (
+              <div
+                key={product.id}
+                className="product-card"
+                style={{ transitionDelay: `${index * 90}ms` }}
+              >
                 <img src={comingSoon} alt={product.name} className="product-img" />
                 <h3 className="product-name">{product.name}</h3>
                 <p className="product-desc">{product.desc}</p>

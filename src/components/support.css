@@ -3,6 +3,50 @@
   background-color: #ffffff;
 }
 
+.reveal-block {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-bg.reveal-block {
+  transform: translateY(18px) scale(0.99);
+}
+
+.hero-bg.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+.top-card-row.reveal-block .support-card,
+.faq-section.reveal-block .faq-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.3s ease;
+}
+
+.top-card-row.is-visible .support-card,
+.faq-section.is-visible .faq-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.top-card-row.is-visible .support-card:nth-child(1) { transition-delay: 70ms; }
+.top-card-row.is-visible .support-card:nth-child(2) { transition-delay: 140ms; }
+.top-card-row.is-visible .support-card:nth-child(3) { transition-delay: 210ms; }
+.top-card-row.is-visible .support-card:nth-child(4) { transition-delay: 280ms; }
+.top-card-row.is-visible .support-card:nth-child(5) { transition-delay: 350ms; }
+
+.support-us-section.reveal-block,
+.hearing-feedback-section.reveal-block,
+.faq-section.reveal-block {
+  transition-delay: 80ms;
+}
+
 .hero-bg {
   background-image: url('./assets/products/bg9.png');
   background-size: cover;
@@ -80,6 +124,17 @@
 
 .support-card:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+@media (hover: none) {
+  .support-card:hover,
+  .support-card:hover .icon-circle,
+  .support-submit-btn:hover:not(:disabled),
+  .feedback-form-section button:hover,
+  .faq-item:hover {
+    transform: none;
+    box-shadow: inherit;
+  }
 }
 
 .support-card.inactive {
@@ -418,36 +473,42 @@
 
 @media (max-width: 600px) {
   .hero-bg {
-    min-height: 300px;
-    padding: 4rem 1rem;
+    min-height: 280px;
+    padding: 3rem 1rem 2.5rem;
   }
 
   .hero-bg h1 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   .top-card-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .support-main-content {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .hearing-feedback-section {
     flex-direction: column;
   }
 
+  .hearing-image-section,
   .feedback-form-section {
-    padding: 2rem;
+    min-width: 100%;
+  }
+
+  .feedback-form-section {
+    padding: 1.5rem;
   }
 
   .support-us-section {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
   }
 
   .support-us-form {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .support-form-grid {
@@ -456,6 +517,10 @@
 
   .support-us-header h2 {
     font-size: 1.5rem;
+  }
+
+  .faq-section {
+    padding: 2.5rem 0 0;
   }
 }
 
