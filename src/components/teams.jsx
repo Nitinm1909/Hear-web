@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import "./teams.css";
 import { Linkedin, Instagram } from "lucide-react";
 import { motion } from "framer-motion";

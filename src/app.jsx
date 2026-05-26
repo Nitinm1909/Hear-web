@@ -22,22 +22,18 @@ import "./App.css";
 
 const AppContent = () => {
   const location = useLocation();
-  const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+    supabase.auth.getSession().then(() => {
       setLoading(false);
     });
 
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      console.log('Auth state changed:', _event, session);
-      setSession(session);
+    } = supabase.auth.onAuthStateChange(() => {
       setLoading(false);
     });
 

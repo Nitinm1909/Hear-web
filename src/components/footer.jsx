@@ -31,7 +31,7 @@ const Footer = () => {
             <a href="/about">About Us</a>
             <a href="/products">Products</a>
             <a href="/hearingtest">Take a Hearing Test</a>
-            <a href="#">Book a Consultation</a>
+            <a href="/support">Book a Consultation</a>
           </div>
         </div>
 
@@ -61,9 +61,9 @@ const Footer = () => {
             <button type="submit">Subscribe</button>
           </form>
           <div className="footer-socials">
-            <a href="#"><FaLinkedin /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaInstagram /></a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer noopener"><FaLinkedin /></a>
+            <a href="https://x.com" target="_blank" rel="noreferrer noopener"><FaTwitter /></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noreferrer noopener"><FaInstagram /></a>
           </div>
         </div>
 

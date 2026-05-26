@@ -3,7 +3,7 @@ import "./hearingtest.css";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import { Mic, Headphones, Volume2, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { saveHearingTestResult } from "../utils/hearingTestUtils";
 
 // Leaflet Icon Fix
@@ -72,19 +72,14 @@ const HearingTest = () => {
 
     useEffect(() => {
         if (step === "test" && audioContext) {
-            playSound(frequencies[currentFrequency]);
+            const oscillator = audioContext.createOscillator();
+            oscillator.type = "sine";
+            oscillator.frequency.setValueAtTime(frequencies[currentFrequency], audioContext.currentTime);
+            oscillator.connect(audioContext.destination);
+            oscillator.start();
+            setTimeout(() => oscillator.stop(), 1000);
         }
     }, [currentFrequency, step, audioContext]);
-
-    const playSound = (freq) => {
-        if (!audioContext) return;
-        const oscillator = audioContext.createOscillator();
-        oscillator.type = "sine";
-        oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
-        oscillator.connect(audioContext.destination);
-        oscillator.start();
-        setTimeout(() => oscillator.stop(), 1000);
-    };
 
     const handleHeard = async (heard) => {
         const newResult = { freq: frequencies[currentFrequency], heard };

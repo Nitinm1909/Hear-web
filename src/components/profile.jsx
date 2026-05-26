@@ -40,69 +40,69 @@ export default function ProfilePage() {
 
   // ─── Fetch user profile on mount ─────────────────────────────────────────
   useEffect(() => {
-    fetchUserData();
-  }, []);
+    const fetchUserData = async () => {
+      try {
+        setLoading(true);
+        const {
+          data: { user },
+          error: authError,
+        } = await supabase.auth.getUser();
 
-  const fetchUserData = async () => {
-    try {
-      setLoading(true);
-      const {
-        data: { user },
-        error: authError,
-      } = await supabase.auth.getUser();
-
-      if (authError || !user) {
-        navigate("/login");
-        return;
-      }
-
-      // Use maybeSingle() — returns null instead of throwing when no row exists
-      const { data: profileData, error: profileError } = await supabase
-        .from("profiles")
-        .select("*")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      if (profileError) {
-        console.error("Error fetching profile:", profileError);
-      }
-
-      if (profileData) {
-        const nameParts = (profileData.full_name || "").split(" ");
-        setProfile({
-          firstName: nameParts[0] || "",
-          lastName: nameParts.slice(1).join(" ") || "",
-          email: profileData.email || user.email || "",
-          phone: profileData.phone || "",
-          gender: profileData.gender || "",
-          dob: profileData.date_of_birth || "",
-          address: profileData.address || "",
-        });
-
-        if (profileData.avatar_url) {
-          setProfilePic(profileData.avatar_url);
+        if (authError || !user) {
+          navigate("/login");
+          return;
         }
-      } else {
-        // Fallback to auth metadata when no profile row exists yet
-        setProfile({
-          firstName: user.user_metadata?.first_name || "",
-          lastName: user.user_metadata?.last_name || "",
-          email: user.email || "",
-          phone: user.user_metadata?.phone || "",
-          gender: user.user_metadata?.gender || "",
-          dob: user.user_metadata?.dob || "",
-          address: user.user_metadata?.address || "",
-        });
-      }
 
-      // Also fetch hearing tests
-      await fetchHearingTests(user.id);
-    } catch (err) {
-      console.error("Unexpected error fetching user data:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+        // Use maybeSingle() — returns null instead of throwing when no row exists
+        const { data: profileData, error: profileError } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (profileError) {
+          console.error("Error fetching profile:", profileError);
+        }
+
+        if (profileData) {
+          const nameParts = (profileData.full_name || "").split(" ");
+          setProfile({
+            firstName: nameParts[0] || "",
+            lastName: nameParts.slice(1).join(" ") || "",
+            email: profileData.email || user.email || "",
+            phone: profileData.phone || "",
+            gender: profileData.gender || "",
+            dob: profileData.date_of_birth || "",
+            address: profileData.address || "",
+          });
+
+          if (profileData.avatar_url) {
+            setProfilePic(profileData.avatar_url);
+          }
+        } else {
+          // Fallback to auth metadata when no profile row exists yet
+          setProfile({
+            firstName: user.user_metadata?.first_name || "",
+            lastName: user.user_metadata?.last_name || "",
+            email: user.email || "",
+            phone: user.user_metadata?.phone || "",
+            gender: user.user_metadata?.gender || "",
+            dob: user.user_metadata?.dob || "",
+            address: user.user_metadata?.address || "",
+          });
+        }
+
+        // Also fetch hearing tests
+        await fetchHearingTests(user.id);
+      } catch (err) {
+        console.error("Unexpected error fetching user data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, [navigate]);
 
   // ─── Fetch hearing tests ──────────────────────────────────────────────────
   const fetchHearingTests = async (userId) => {
@@ -465,7 +465,7 @@ export default function ProfilePage() {
                   <h4 className="info-title">My Last Hearing Tests</h4>
                   {hearingTests.length > 0 ? (
                     <div className="hearing-tests-grid">
-                      {hearingTests.map((test, index) => {
+                      {hearingTests.map((test) => {
                         const leftResults = parseEarResults(test.left_ear_results);
                         const rightResults = parseEarResults(test.right_ear_results);
                         return (

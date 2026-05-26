@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Search, User, ChevronDown } from 'lucide-react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 import { supabase } from '../supabaseClient';
 import './navbar.css';
 import './navbarres.css';
+
+const alwaysBlackPages = ['/products', '/hearingtest', '/profile', '/support'];
 
 const Navbar = () => {
   const [searchActive, setSearchActive] = useState(false);
@@ -16,13 +18,9 @@ const Navbar = () => {
 
   const searchRef = useRef(null);
   const userDropdownRef = useRef(null);
-  const navigate = useNavigate();
   const location = useLocation();
 
   const pathname = location.pathname;
-
-  // Pages that should always have black navbar
-  const alwaysBlackPages = ['/products', '/hearingtest', '/profile', '/support'];
 
   // Detect scroll only for Home and About
   useEffect(() => {
