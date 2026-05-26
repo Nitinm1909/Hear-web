@@ -162,9 +162,20 @@
   gap: 20px;
 }
 
+.profile-page .field-label {
+  display: block;
+  grid-column: span 2;
+  margin-bottom: -10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #495057;
+}
+
 .profile-page input,
 .profile-page select,
 .profile-page textarea {
+  width: 100%;
+  min-width: 0;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -314,32 +325,42 @@
 
   .profile-page .sidebar {
     width: 100%;
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 10px;
     border-radius: 0;
     padding: 15px 10px;
-    box-shadow: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     border-right: none;
     border-bottom: 1px solid #f1f1f1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .profile-page .sidebar-title {
-    display: none;
+    display: block;
+    flex: 0 0 auto;
+    margin: 0 10px 0 0;
+    white-space: nowrap;
   }
 
   .profile-page .menu {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
+    gap: 10px;
+    width: auto;
   }
 
   .profile-page .menu-item {
-    flex: 1;
+    flex: 0 0 auto;
     justify-content: center;
     font-size: 14px;
     padding: 10px 8px;
     margin-bottom: 0;
     border-radius: 8px;
+    white-space: nowrap;
   }
 
   .profile-page .profile-header {
@@ -359,6 +380,11 @@
 
   .profile-page .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .profile-page .field-label {
+    grid-column: span 1;
+    margin-bottom: -6px;
   }
 
   .profile-page input,

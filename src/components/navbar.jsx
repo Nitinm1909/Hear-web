@@ -1,11 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import { Search, User, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from "react-router-dom";
 import { supabase } from '../supabaseClient';
 import './navbar.css';
 import './navbarres.css';
-
-const alwaysBlackPages = ['/products', '/hearingtest', '/profile', '/support'];
 
 const Navbar = () => {
   const [searchActive, setSearchActive] = useState(false);
@@ -19,6 +17,7 @@ const Navbar = () => {
   const searchRef = useRef(null);
   const userDropdownRef = useRef(null);
   const location = useLocation();
+  const alwaysBlackPages = useMemo(() => ['/products', '/hearingtest', '/profile', '/support'], []);
 
   const pathname = location.pathname;
 
@@ -29,7 +28,7 @@ const Navbar = () => {
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }
-  }, [pathname]);
+  }, [pathname, alwaysBlackPages]);
 
   // Detect screen resize
   useEffect(() => {

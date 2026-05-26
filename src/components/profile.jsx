@@ -428,7 +428,9 @@ export default function ProfilePage() {
                       <option value="Female">Female</option>
                       <option value="Other">Other</option>
                     </select>
+                    <label className="field-label" htmlFor="dob-input">Date of Birth</label>
                     <input
+                      id="dob-input"
                       type="date"
                       name="dob"
                       value={profile.dob}
