@@ -230,8 +230,8 @@ body {
 
 @media (max-width: 768px) {
   .top-picks-wrapper {
-    margin-top: -3.5rem;
-    padding: 32px 12px 40px;
+    margin-top: -4.75rem;
+    padding: 18px 12px 36px;
   }
 
   .top-picks-container {
@@ -254,13 +254,14 @@ body {
 
   .product-card {
     width: min(88vw, 340px);
-    margin-top: 18px;
+    margin-top: 6px;
     padding: 0 14px 14px;
   }
 
   .product-img {
-    height: 160px;
+    height: 180px;
     margin-bottom: 12px;
+    object-position: top center;
   }
 
   .arrow.left {

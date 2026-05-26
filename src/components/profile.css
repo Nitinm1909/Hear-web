@@ -162,10 +162,16 @@
   gap: 20px;
 }
 
+.profile-page .field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
 .profile-page .field-label {
   display: block;
-  grid-column: span 2;
-  margin-bottom: -10px;
+  margin-bottom: 0;
   font-size: 13px;
   font-weight: 600;
   color: #495057;
@@ -189,6 +195,10 @@
   grid-column: span 2;
   resize: vertical;
   min-height: 90px;
+}
+
+.profile-page .field-group input {
+  width: 100%;
 }
 
 .profile-page input:disabled,
@@ -383,8 +393,7 @@
   }
 
   .profile-page .field-label {
-    grid-column: span 1;
-    margin-bottom: -6px;
+    margin-bottom: 0;
   }
 
   .profile-page input,
